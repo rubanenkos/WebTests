@@ -13,8 +13,8 @@ class TestSearchPage:
         main_directory = dirname(dirname(dirname(__file__)))
         print(main_directory)
         path = direct + "/chromedriver"
-        driver = webdriver.Chrome(path)
         print(path)
+        driver = webdriver.Chrome("chromedriver")
         # driver = webdriver.Chrome(main_directory + "/WebTests/chromedriver")
         driver.maximize_window()
 
