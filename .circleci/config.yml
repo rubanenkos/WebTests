@@ -24,6 +24,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
+            ls -lh
             python3 -m pytest -m smoke
       - store_artifacts:
           path: test-reports
