@@ -1,12 +1,22 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from os.path import dirname
 
 class TestSearchPage:
 
     @pytest.mark.smoke
     def test_search_1(self):
-        driver = webdriver.Chrome('./chromedriver')
+
+        direct = dirname(dirname(__file__))
+        print(direct)
+        main_directory = dirname(dirname(dirname(__file__)))
+        print(main_directory)
+        driver = webdriver.Chrome(direct + "/chromedriver")
+        # driver = webdriver.Chrome(main_directory + "/WebTests/chromedriver")
+        driver.maximize_window()
+
+        # driver = webdriver.Chrome('./chromedriver')
         session_id = driver.session_id
         link = "https://www.python.org"
         driver.get(link)
