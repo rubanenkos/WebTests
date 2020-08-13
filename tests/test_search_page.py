@@ -40,13 +40,20 @@ class TestSearchPage:
 
     @pytest.mark.smoke
     def test_search_2(self):
-        driver = webdriver.Chrome('chromedriver')
+        direct = dirname(dirname(__file__))
+        # print(direct)
+        # main_directory = dirname(dirname(dirname(__file__)))
+        # print(main_directory)
+        path = direct + "/chromedriver"
+        print(path)
+        driver = webdriver.Chrome(path)
+        # driver = webdriver.Chrome('chromedriver')
         session_id = driver.session_id
         driver.get("https://www.python.org")
         try:
             title = driver.title
             print(title)
-            assert 'python' in title
+            assert 'Python' in title
         except AssertionError:
             driver.get_screenshot_as_file(session_id+'.png')
             raise
