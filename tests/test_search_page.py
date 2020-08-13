@@ -35,18 +35,18 @@ class TestSearchPage:
         finally:
             driver.close()
 
-    @pytest.mark.smoke
-    def test_search_2(self):
-        driver = webdriver.Chrome('./chromedriver')
-        session_id = driver.session_id
-        driver.get("https://www.python.org")
-        try:
-            title = driver.title
-            print(title)
-            assert 'java' in title
-        except AssertionError:
-            driver.get_screenshot_as_file(session_id+'.png')
-            raise
-        finally:
-            driver.close()
+    # @pytest.mark.smoke
+    # def test_search_2(self):
+    #     driver = webdriver.Chrome('./chromedriver')
+    #     session_id = driver.session_id
+    #     driver.get("https://www.python.org")
+    #     try:
+    #         title = driver.title
+    #         print(title)
+    #         assert 'java' in title
+    #     except AssertionError:
+    #         driver.get_screenshot_as_file(session_id+'.png')
+    #         raise
+    #     finally:
+    #         driver.close()
 
