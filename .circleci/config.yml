@@ -24,6 +24,8 @@ jobs:
           command: |
             uname -a
             sudo npm install -g allure-commandline --save-dev
+      - run: mkdir test-reports
+      - run: mkdir raw_test_result_jsons
       - run:
           name: run tests
           command: |
