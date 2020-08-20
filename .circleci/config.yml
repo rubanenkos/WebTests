@@ -24,14 +24,12 @@ jobs:
           command: |
             uname -a
             sudo npm install -g allure-commandline --save-dev
-      - run: mkdir test-reports
-      - run: mkdir raw_test_result_jsons
       - run:
           name: run tests
           command: |
             . venv/bin/activate
-            ls -lh
-            python3 -m pytest -m smoke --alluredir ~/repo/raw_test_result_jsons allure generate -c ~/repo/raw_test_result_jsons -o ~/repo/test-reports
+            python3 -m pytest -m smoke --alluredir ~/repo/raw_test_result_jsons
+            allure generate -c ~/repo/raw_test_result_jsons -o ~/repo/test-reports
       - store_artifacts:
           path: test-reports
           destination: test-reports
