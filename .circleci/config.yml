@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:latest-browsers
+      - image: circleci/python:jessie-node-browsers
     working_directory: ~/repo
     steps:
       - checkout
