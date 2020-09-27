@@ -1,6 +1,7 @@
 # This is a template framework to show how to run Selenium test using CircleCI
 
-Before running test using CircleCI go for https://circleci.com/ to Sign Up:
+Before running test using CircleCI go for https://circleci.com/ to Sign Up.
+
 After Log In, all existed projects for some Github repo will be automatically available for setting up.
 
 Create .circleci/config.yml in the root directory.
