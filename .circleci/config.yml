@@ -2,17 +2,16 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:latest-browsers
+      - image: circleci/python:latest-node-browsers
     working_directory: ~/repo
     steps:
       - checkout
-      - run: mkdir test-reports
       - run:
           name: Download Selenium
           command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
       - run:
           name: Start Selenium
-          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+          command: java -jar selenium-server-standalone-3.5.3.jar -log selenium.log
           background: true
       - run:
           name: install dependencies
@@ -21,11 +20,16 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
       - run:
+          name: install allure CLI
+          command: |
+            uname -a
+            sudo npm install -g allure-commandline --save-dev
+      - run:
           name: run tests
           command: |
             . venv/bin/activate
-            ls -lh
-            python3 -m pytest -m smoke
+            python3 -m pytest -m smoke --alluredir ~/repo/raw_test_result_jsons
+            allure generate -c ~/repo/raw_test_result_jsons -o ~/repo/test-reports
       - store_artifacts:
           path: test-reports
           destination: test-reports
